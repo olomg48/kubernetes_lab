@@ -1,0 +1,51 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.vscode
+kubernetes.sln
+
+# .NET / Visual Studio
+.vs/
+bin/
+obj/
+artifacts/
+TestResults/
+*.user
+*.suo
+*.nupkg
+*.snupkg
+*.appsettings
+# Publish output
+publish/
+out/
+
+# Logs / temp
+*.log
+*.trace
+*.tmp
+
+# App settings (lokalne/sekrety)
+appsettings.*.local.json
+secrets.json
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

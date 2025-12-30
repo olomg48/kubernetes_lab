@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: fastapi
+      dockerfile: Dockerfile
+    container_name: api
+    image: olomg48/api:latest
+    ports:
+      - 8000:8000
+    networks:
+      - network_dev
+
+  frontend:
+    build:
+      context: front
+      dockerfile: Dockerfile
+    container_name: front
+    image: olomg48/front:latest
+    ports:
+      - 8080:8080
+    networks:
+      - network_dev
+
+networks:
+  network_dev:
+    driver: bridge

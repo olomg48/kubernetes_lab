@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: olomg48/api:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_CONN
+          value: postgresql://wojtek359:0994_088ad6@psql01.mikr.us/db_wojtek359
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: apiport-srv
+spec:
+  selector:
+    app: api
+  ports:
+    - port: 8000
+      targetPort: 8000
+      nodePort: 8000
+  type: NodePort

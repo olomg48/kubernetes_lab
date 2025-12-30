@@ -1,0 +1,7 @@
+pydantic-core
+fastapi[standard]
+uvicorn
+transformers
+scipy
+sqlmodel
+psycopg2

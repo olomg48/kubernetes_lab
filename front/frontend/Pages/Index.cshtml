@@ -1,0 +1,22 @@
+﻿@page
+@model IIS_website.Pages.IndexModel
+
+<h2>Tasks</h2>
+<ul>
+@foreach (var t in Model.ItemsList)
+{
+    <li>@t.id — @t.description </li>
+}
+</ul>
+
+<h2>Nowe zadanie</h2>
+<form method="post">
+    <div>
+        <label for="description">Opis</label>
+        <input id="description" name="ItemCreate.description" value="@Model.ItemCreate.description" />
+        <span asp-validation-for="ItemCreate.description"></span>
+    </div>
+    <button type="submit">Dodaj</button>
+</form>
+
+<hr />
