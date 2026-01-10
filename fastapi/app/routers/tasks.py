@@ -4,6 +4,7 @@ from typing import List
 from ..db import get_session
 from ..models import Tasks
 from ..schemas import TaskRead, TaskCreate, TaskUpdate
+import httpx
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
@@ -14,7 +15,7 @@ def get_tasks(*, session: Session = Depends(get_session)):
 
 
 @router.get(path="/get/{task_id}", response_model=TaskRead)
-def get_single_task(*, session: Session = Depends(get_session), task_id: int):
+async def get_single_task(*, session: Session = Depends(get_session), task_id: int):
     task = session.get(Tasks, task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
@@ -22,7 +23,17 @@ def get_single_task(*, session: Session = Depends(get_session), task_id: int):
 
 
 @router.post(path="/create", response_model=TaskCreate)
-def create_task(*, session: Session = Depends(get_session), task: TaskCreate):
+async def create_task(*, session: Session = Depends(get_session), task: TaskCreate):
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+                "http://inference:8000/predict", # dostosuj endpoint
+                json={"task": task.description}  # dane wysyłane do modelu
+            )
+        response.raise_for_status()
+        prediction = response.json()
+        # 2. Przypisanie kategorii z odpowiedzi
+        task.category = prediction
+    
     db_task = Tasks.model_validate(task, from_attributes=True)
     session.add(db_task)
     session.commit()
@@ -30,7 +41,7 @@ def create_task(*, session: Session = Depends(get_session), task: TaskCreate):
     return db_task
 
 @router.patch("/update/{task_id}", response_model=TaskRead)
-def update_task(*, session: Session = Depends(get_session), task_id: int, task: TaskUpdate):
+async def update_task(*, session: Session = Depends(get_session), task_id: int, task: TaskUpdate):
     db_task = session.get(Tasks, task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
@@ -43,7 +54,7 @@ def update_task(*, session: Session = Depends(get_session), task_id: int, task: 
 
 
 @router.delete(path="/delete/{task_id}")
-def remove_task(*, session: Session = Depends(get_session), task_id: int):
+async def remove_task(*, session: Session = Depends(get_session), task_id: int):
     task = session.get(Tasks, task_id)
     session.delete(task)
     session.commit()

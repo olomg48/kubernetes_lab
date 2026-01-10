@@ -33,8 +33,6 @@ services:
       - network_dev
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
-    volumes:
-      - ./mlartifacts:/mlartifacts
 
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
@@ -45,7 +43,7 @@ services:
       - network_dev
     working_dir: /mlflow
     command: >
-      bash -c "pip install boto3 && mlflow server 
+      mlflow server 
       --backend-store-uri sqlite:///mlflow.db 
       --artifacts-destination s3://mlflow-bucket/
       --host 0.0.0.0
