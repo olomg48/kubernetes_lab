@@ -1,5 +1,3 @@
 pydantic-core
 fastapi[standard]
-uvicorn
-sqlmodel
-psycopg2
+mlflow

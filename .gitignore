@@ -4,7 +4,9 @@ __pycache__/
 .env
 .vscode
 kubernetes.sln
-
+*tmp*
+*minio*
+temp*.py
 # .NET / Visual Studio
 .vs/
 bin/

@@ -1,0 +1,202 @@
+ID,Task,Category
+1,Update project documentation,Work
+2,Buy groceries for the week,Personal
+3,Morning 30-minute jog,Health
+4,Pay monthly electricity bill,Finance
+5,Clean the kitchen counters,Home
+6,Prepare slides for Monday meeting,Work
+7,Call mom for her birthday,Personal
+8,Schedule dentist appointment,Health
+9,Review investment portfolio,Finance
+10,Organize the garage,Home
+11,Reply to urgent client emails,Work
+12,Read 20 pages of a book,Personal
+13,Prep Healthy lunch for tomorrow,Health
+14,Transfer savings to high-yield account,Finance
+15,Water the indoor plants,Home
+16,Finish coding the new feature,Work
+17,Plan weekend mountain trip,Personal
+18,Take daily vitamins,Health
+19,Update budget spreadsheet,Finance
+20,Fix the leaking bathroom faucet,Home
+21,Conduct team 1-on-1 meetings,Work
+22,Book flight tickets for vacation,Personal
+23,Go to the gym for strength training,Health
+24,Cancel unused gym membership,Finance
+25,Vacuum the living room,Home
+26,Research competitors for new project,Work
+27,Buy a gift for friend's wedding,Personal
+28,Meditate for 10 minutes,Health
+29,File annual tax returns,Finance
+30,Mow the backyard lawn,Home
+31,Brainstorm marketing strategies,Work
+32,Organize digital photo library,Personal
+33,Drink 2 liters of water,Health
+34,Reconcile bank statements,Finance
+35,Wash the windows,Home
+36,Attend the quarterly review,Work
+37,Pick up dry cleaning,Personal
+38,Book a physical therapy session,Health
+39,Pay credit card bill,Finance
+40,Dust the bookshelves,Home
+41,Draft weekly newsletter,Work
+42,Write in Personal journal,Personal
+43,Go for a 20-minute walk,Health
+44,Check insurance policy renewal,Finance
+45,Change the bed sheets,Home
+46,Debug the login issue,Work
+47,Meet Sarah for coffee,Personal
+48,Complete a yoga session,Health
+49,Review subscription services,Finance
+50,Take out the trash and recycling,Home
+51,Submit expense reports,Work
+52,Learn 5 new Spanish words,Personal
+53,Buy fresh vegetables,Health
+54,Set up automatic bill payments,Finance
+55,Clean the oven,Home
+56,Prepare project roadmap,Work
+57,Visit the local library,Personal
+58,Schedule annual eye exam,Health
+59,Compare mortgage rates,Finance
+60,Sort through old clothes for donation,Home
+61,Follow up with potential leads,Work
+62,Watch a documentary,Personal
+63,Limit sugar intake today,Health
+64,Calculate monthly net worth,Finance
+65,Replace the burnt-out lightbulb,Home
+66,Update LinkedIn profile,Work
+67,Practice guitar for 30 minutes,Personal
+68,Cycle to the park,Health
+69,Audit business expenses,Finance
+70,Scrub the bathtub,Home
+71,Organize desk Workspace,Work
+72,Call the insurance agent,Personal
+73,Cook a new Healthy recipe,Health
+74,Research retirement funds,Finance
+75,Empty the dishwasher,Home
+76,Write blog post draft,Work
+77,Plan a dinner party,Personal
+78,Check blood pressure,Health
+79,Pay property taxes,Finance
+80,Sweep the porch,Home
+81,Review meeting minutes,Work
+82,Renew passport,Personal
+83,Go swimming at the local pool,Health
+84,Donate to a local charity,Finance
+85,Rearrange living room furniture,Home
+86,Test website performance,Work
+87,Send thank you notes,Personal
+88,Sleep for at least 8 hours,Health
+89,Evaluate stock options,Finance
+90,Polish the silverware,Home
+91,Design a new logo concept,Work
+92,Attend a local community event,Personal
+93,Book a massage,Health
+94,Update emergency fund goal,Finance
+95,Paint the guest room wall,Home
+96,Archive old emails,Work
+97,Buy a new pair of shoes,Personal
+98,Stretch for 15 minutes,Health
+99,Track daily spending,Finance
+100,Clean the lint filter,Home
+101,Send financial report,Finance
+101,Clean the kitchen,Home
+102,Vacuum the apartment,Home
+103,Wash the windows,Home
+104,Do the laundry,Home
+105,Iron the clothes,Home
+106,Take out the trash,Home
+107,Clean the fridge,Home
+108,Organize the wardrobe,Home
+109,Fix the faucet,Home
+110,Change the bedding,Home
+111,Water the plants,Home
+112,Clean the bathroom,Home
+113,Review the pantry,Home
+114,Clean the oven,Home
+115,Sort household documents,Home
+116,Clean the balcony,Home
+117,Order cleaning supplies,Home
+118,Do minor repairs,Home
+119,Defrost the freezer,Home
+120,Rearrange the furniture,Home
+121,Check account balance,Finance
+122,Pay bills,Finance
+123,Update the budget,Finance
+124,Review subscriptions,Finance
+125,Put money into savings,Finance
+126,Pay off credit card,Finance
+127,Analyze expenses,Finance
+128,Set a spending limit,Finance
+129,Pay rent,Finance
+130,Check transaction history,Finance
+131,Create a savings plan,Finance
+132,Compare bank offers,Finance
+133,Update the financial spreadsheet,Finance
+134,Pay tax,Finance
+135,Check insurance,Finance
+136,Plan major expenses,Finance
+137,Close unused account,Finance
+138,Check exchange rates,Finance
+139,Create a financial reserve,Finance
+140,Set financial goals,Finance
+141,Read 20 pages of a book,Personal
+142,Plan the week,Personal
+143,Organize notes,Personal
+144,Learn a new skill,Personal
+145,Limit social media,Personal
+146,Make a list of goals,Personal
+147,Meditate for 10 minutes,Personal
+148,Update CV,Personal
+149,Back up data,Personal
+150,Review contacts,Personal
+151,Write down ideas,Personal
+152,Listen to a podcast,Personal
+153,Plan a vacation,Personal
+154,Do a digital detox,Personal
+155,Write a journal,Personal
+156,Learn a language,Personal
+157,Create a development plan,Personal
+158,Organize the calendar,Personal
+159,Review photos,Personal
+160,Delete unnecessary files,Personal
+161,Make a doctor's appointment,Health
+162,Go for a 30-minute walk,Health
+163,Drink 2 liters of water,Health
+164,Do a workout,Health
+165,Prepare a healthy meal,Health
+166,Stretch for 10 minutes,Health
+167,Go to sleep earlier,Health
+168,Get a check-up,Health
+169,Plan a diet,Health
+170,Take a screen break,Health
+171,Breathing exercises,Health
+172,Do yoga,Health
+173,Mind your posture,Health
+174,Get a massage,Health
+175,Limit sugar,Health
+176,Take supplements,Health
+177,Plan weekly activity,Health
+178,Have an eye exam,Health
+179,Have an alcohol-free day,Health
+180,Measure blood pressure,Health
+181,Check the inbox,Work
+182,Plan tasks for the day,Work
+183,Prepare a report,Work
+184,Update documentation,Work
+185,Team meeting,Work
+186,Set priorities,Work
+187,Review projects,Work
+188,Reply to pending emails,Work
+189,Prepare a presentation,Work
+190,Take meeting notes,Work
+191,Plan a sprint,Work
+192,Review quarterly goals,Work
+193,Organize files,Work
+194,Automate a process,Work
+195,Plan training,Work
+196,Prepare an offer,Work
+197,Check KPIs,Work
+198,Do a retrospective,Work
+199,Plan team vacations,Work
+200,Update project status,Work
