@@ -12,7 +12,10 @@ class TaskInput(BaseModel):
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    if loaded_model:
+        return {"status": "ok"}
+    else:
+        return{"status": "unhealthy"}
 
 
 @app.post("/predict")

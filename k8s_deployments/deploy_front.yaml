@@ -1,3 +1,4 @@
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: front-deployment
@@ -34,5 +35,5 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 8080
+      nodePort: 30880
   type: NodePort

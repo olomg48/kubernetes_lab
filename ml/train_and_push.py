@@ -8,11 +8,11 @@ from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
 import os
 
-os.environ['MLFLOW_S3_ENDPOINT_URL'] = "http://localhost:9000"
+os.environ['MLFLOW_S3_ENDPOINT_URL'] = "https://b6fc041bbc4a-10-244-9-184-30901.spch.r.killercoda.com"
 os.environ['AWS_ACCESS_KEY_ID'] = "admin"
 os.environ['AWS_SECRET_ACCESS_KEY'] = "password123"
 
-mlflow.set_tracking_uri("http://169.254.53.144:5000")
+mlflow.set_tracking_uri("https://b6fc041bbc4a-10-244-9-184-30500.spch.r.killercoda.com/")
 mlflow.set_experiment("TodoClassifier")
 #mlflow.sklearn.autolog()
 print(f"Tracking URI: {mlflow.get_tracking_uri()}")
