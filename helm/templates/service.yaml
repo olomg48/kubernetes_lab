@@ -1,0 +1,15 @@
+{{- range $appName, $appConfig := .Values.apps }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $appName }}-srv
+spec:
+  selector:
+    app: {{ $appName }}
+  ports:
+    - port: {{ $appConfig.service.port }}
+      targetPort: {{ $appConfig.service.targetPort }}
+      nodePort: {{ $appConfig.service.nodePort }}
+  type: NodePort
+{{- end }}

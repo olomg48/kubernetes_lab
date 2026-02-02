@@ -1,0 +1,76 @@
+global:
+  security:
+    allowInsecureImages: true  
+apps:
+  api:
+    service:
+      port: 8000
+      targetPort: 8000
+      nodePort: 30800
+    deploy:
+      replicas: 1
+      image: olomg48/api:latest
+      containerPort: 8000
+      env:
+        DB_CONN: "postgresql://wojtek359:0994_088ad6@psql01.mikr.us/db_wojtek359"
+  inference:
+    service:
+      port: 8000
+      targetPort: 8000
+      nodePort: 30801
+    deploy:
+      replicas: 1
+      image: olomg48/inference:latest
+      containerPort: 8000
+      env: 
+        MLFLOW_TRACKING_URI: "http://mlflow-srv:5000"
+  front:
+    service:
+      port: 8080
+      targetPort: 8080
+      nodePort: 30880
+    deploy:
+      replicas: 2
+      image: olomg48/front:latest
+      containerPort: 8080
+      env:
+        ApiBaseUrl: "http://api-srv:8000"
+  mlflow:
+    service:
+      port: 5000
+      targetPort: 5000
+      nodePort: 30500
+    deploy:
+      replicas: 1
+      image: olomg48/mlflow:latest
+      containerPort: 5000
+      env:
+        AWS_ACCESS_KEY_ID: "admin"
+        AWS_SECRET_ACCESS_KEY: "password123"
+        MLFLOW_S3_ENDPOINT_URL: "http://minio:9000"
+        MLFLOW_S3_IGNORE_CONFIG_FILE: "true"
+        MLFLOW_PORT: "5000"
+      args: 
+        - "--host"
+        - "0.0.0.0"
+        - "--serve-artifacts"
+        - "--allowed-hosts"
+        - "*" # to do edytowania na killercoda
+        - "--artifacts-destination"
+        - "s3://mlflow-bucket/"
+
+minio:
+  enabled: true
+
+  mode: standalone
+
+  rootUser: admin
+  rootPassword: password123
+
+  service:
+    type: NodePort
+    nodePort: 30900     # API S3
+
+  consoleService:
+    type: NodePort
+    nodePort: 30901     # Web UI

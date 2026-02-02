@@ -1,0 +1,37 @@
+{{- range $appName, $appConfig := .Values.apps }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $appName }}-deployment
+  labels:
+    app: {{ $appName }}
+spec:
+  replicas: {{ $appConfig.deploy.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ $appName }}
+    spec:
+      containers:
+      - name: {{ $appName }}
+        image: {{ $appConfig.deploy.image }}
+        ports:
+        - containerPort: {{ $appConfig.deploy.containerPort }}
+          {{- if $appConfig.deploy.env }}
+        env:
+          {{- range $key, $value := $appConfig.deploy.env }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
+        {{- end }}
+            {{- if $appConfig.deploy.args }}
+        args:
+          {{- range  $value := $appConfig.deploy.args }}
+            - {{ $value | quote }}
+          {{- end }}
+        {{- end }}
+{{- end }}
