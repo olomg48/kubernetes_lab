@@ -15,8 +15,8 @@ apps:
         NORMAL_VAR: "zwykla_wartosc"
       secretEnv:
         DB_CONN:
-          secretName: db-credentials
-          secretKey: connection-string
+          secretName: connection-string
+          secretKey: string
   inference:
     service:
       port: 8000

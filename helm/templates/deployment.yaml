@@ -21,15 +21,15 @@ spec:
         image: {{ $appConfig.deploy.image }}
         ports:
         - containerPort: {{ $appConfig.deploy.containerPort }}
-          {{- if $appConfig.deploy.env }}
+        {{- if or $appConfig.deploy.env $appConfig.deploy.secretEnv }}
         env:
-          # Zwykłe zmienne
+          {{- /* Zwykłe zmienne */ -}}
           {{- range $key, $value := $appConfig.deploy.env }}
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}
           
-          # Zmienne z secretów
+          {{- /* Zmienne z secretów */ -}}
           {{- range $key, $val := $appConfig.deploy.secretEnv }}
           - name: {{ $key }}
             valueFrom:
@@ -37,4 +37,5 @@ spec:
                 name: {{ $val.secretName }}
                 key: {{ $val.secretKey }}
           {{- end }}
+        {{- end }}
 {{- end }}
