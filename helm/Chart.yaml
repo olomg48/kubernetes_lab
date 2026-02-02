@@ -9,5 +9,5 @@ appVersion: "1.0.0"
 
 dependencies:
   - name: minio
-    version: 5.4.0   # przykład – sprawdź aktualną wersję
+    version: 5.4.0 
     repository: https://charts.min.io/

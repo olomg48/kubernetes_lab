@@ -21,12 +21,12 @@ TestResults/
 # Publish output
 publish/
 out/
-
+secrets.yaml
 # Logs / temp
 *.log
 *.trace
 *.tmp
-
+init.sh
 # App settings (lokalne/sekrety)
 appsettings.*.local.json
 secrets.json

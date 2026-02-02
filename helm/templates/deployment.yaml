@@ -23,15 +23,18 @@ spec:
         - containerPort: {{ $appConfig.deploy.containerPort }}
           {{- if $appConfig.deploy.env }}
         env:
+          # Zwykłe zmienne
           {{- range $key, $value := $appConfig.deploy.env }}
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}
-        {{- end }}
-            {{- if $appConfig.deploy.args }}
-        args:
-          {{- range  $value := $appConfig.deploy.args }}
-            - {{ $value | quote }}
+          
+          # Zmienne z secretów
+          {{- range $key, $val := $appConfig.deploy.secretEnv }}
+          - name: {{ $key }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ $val.secretName }}
+                key: {{ $val.secretKey }}
           {{- end }}
-        {{- end }}
 {{- end }}

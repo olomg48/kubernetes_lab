@@ -11,12 +11,12 @@ spec:
       protocol: TCP
       port: 9000
       targetPort: 9000
-      nodePort: 30900 # API Minio dostępne na tym porcie hosta
+      nodePort: 30900 
     - name: console
       protocol: TCP
       port: 9001
       targetPort: 9001
-      nodePort: 30901 # Konsola Minio UI
+      nodePort: 30901 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -49,7 +49,7 @@ spec:
           mountPath: /data
       volumes:
       - name: minio-data
-        emptyDir: {} # Dla testów. Przy produkcji użyj PersistentVolumeClaim
+        emptyDir: {} 
 ---
 apiVersion: v1
 kind: Service
@@ -63,7 +63,7 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-      nodePort: 30500 # MLFlow UI dostępne na tym porcie hosta
+      nodePort: 30500 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -98,7 +98,7 @@ spec:
         - name: AWS_SECRET_ACCESS_KEY
           value: "password123"
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: "http://minio:9000" # Kluczowe: używamy nazwy Service Minio
+          value: "http://minio:9000" 
         - name: MLFLOW_S3_IGNORE_CONFIG_FILE
           value: "true"
         - name: MLFLOW_PORT  # Nadpisujemy automatyczną zmienną K8s

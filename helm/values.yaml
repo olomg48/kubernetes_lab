@@ -12,7 +12,11 @@ apps:
       image: olomg48/api:latest
       containerPort: 8000
       env:
-        DB_CONN: "postgresql://wojtek359:0994_088ad6@psql01.mikr.us/db_wojtek359"
+        NORMAL_VAR: "zwykla_wartosc"
+      secretEnv:
+        DB_CONN:
+          secretName: db-credentials
+          secretKey: connection-string
   inference:
     service:
       port: 8000
