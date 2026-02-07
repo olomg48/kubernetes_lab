@@ -2,10 +2,13 @@
 @model IIS_website.Pages.IndexModel
 
 <h2>Tasks</h2>
-<ul>
+<ul class="list-unstyled">
 @foreach (var t in Model.ItemsList)
 {
-    <li>@t.id — @t.description </li>
+    <li class="mb-2">
+        <span class="badge bg-primary me-2">@t.category</span>
+        <strong>#@t.id</strong> — @t.description
+    </li>
 }
 </ul>
 

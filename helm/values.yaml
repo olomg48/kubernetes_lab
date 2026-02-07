@@ -12,7 +12,7 @@ apps:
       image: olomg48/api:latest
       containerPort: 8000
       env:
-        NORMAL_VAR: "zwykla_wartosc"
+        INFERENCE_URL: "http://inference-srv:8000"
       secretEnv:
         DB_CONN:
           secretName: connection-string

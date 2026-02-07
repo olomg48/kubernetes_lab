@@ -2,15 +2,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using frontend.Contracts;
 using System.ComponentModel.DataAnnotations;
-
+using System.Text.Json.Serialization; 
 namespace IIS_website.Pages
 {
 
     public record TaskCreateDto
-    {
-        [Required, MinLength(1)]
-        public string description { get; set; } = "";
-    }
+{
+    [Required, MinLength(1)]
+    [JsonPropertyName("description")] 
+    public string description { get; set; } = "";
+    public string category { get; set; } = "default";
+}
     public class IndexModel : PageModel
     {
         private readonly IHttpClientFactory _httpFactory;

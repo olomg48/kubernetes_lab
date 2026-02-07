@@ -19,6 +19,7 @@ spec:
       containers:
       - name: {{ $appName }}
         image: {{ $appConfig.deploy.image }}
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ $appConfig.deploy.containerPort }}
 
