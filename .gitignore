@@ -34,6 +34,7 @@ secrets.json
 # Node / frontend
 node_modules/
 *tfvars
+*.tfstate
 dist/
 build/
 .next/
