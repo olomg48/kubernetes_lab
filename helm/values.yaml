@@ -17,6 +17,13 @@ apps:
         DB_CONN:
           secretName: connection-string
           secretKey: string
+      resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
   inference:
     service:
       port: 8000
@@ -28,17 +35,31 @@ apps:
       containerPort: 8000
       env: 
         MLFLOW_TRACKING_URI: "http://mlflow-srv:5000"
+      resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
   front:
     service:
       port: 8080
       targetPort: 8080
       nodePort: 30880
     deploy:
-      replicas: 2
+      replicas: 1
       image: olomg48/front:latest
       containerPort: 8080
       env:
         ApiBaseUrl: "http://api-srv:8000"
+      resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
   mlflow:
     service:
       port: 5000
@@ -51,7 +72,7 @@ apps:
       env:
         AWS_ACCESS_KEY_ID: "admin"
         AWS_SECRET_ACCESS_KEY: "password123"
-        MLFLOW_S3_ENDPOINT_URL: "http://minio:9000"
+        MLFLOW_S3_ENDPOINT_URL: "http://app-helm-minio:9000"
         MLFLOW_S3_IGNORE_CONFIG_FILE: "true"
         MLFLOW_PORT: "5000"
       args: 
@@ -62,6 +83,13 @@ apps:
         - "*" # to do edytowania na killercoda
         - "--artifacts-destination"
         - "s3://mlflow-bucket/"
+      resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "2048Mi"
+            cpu: "1000m"
 
 minio:
   enabled: true
@@ -78,3 +106,11 @@ minio:
   consoleService:
     type: NodePort
     nodePort: 30901     # Web UI
+    
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "100m"
+    limits:
+      memory: "2Gi"
+      cpu: "500m"

@@ -21,6 +21,17 @@ spec:
         image: {{ $appConfig.deploy.image }}
         ports:
         - containerPort: {{ $appConfig.deploy.containerPort }}
+
+        {{- if $appConfig.deploy.args }}
+        args:
+          {{- toYaml $appConfig.deploy.args | nindent 10 }}
+        {{- end }}
+
+        {{- if $appConfig.deploy.resources }}
+        resources:
+          {{- toYaml $appConfig.deploy.resources | nindent 10 }}
+        {{- end }}
+
         {{- if or $appConfig.deploy.env $appConfig.deploy.secretEnv }}
         env:
           {{- /* Zwykłe zmienne */ -}}
@@ -37,5 +48,6 @@ spec:
                 name: {{ $val.secretName }}
                 key: {{ $val.secretKey }}
           {{- end }}
+
         {{- end }}
 {{- end }}

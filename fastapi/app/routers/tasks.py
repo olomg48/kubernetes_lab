@@ -5,6 +5,9 @@ from ..db import get_session
 from ..models import Tasks
 from ..schemas import TaskRead, TaskCreate, TaskUpdate
 import httpx
+import os
+
+inference_url = os.getenv("INFERENCE_URL", "http://inference:8000/")
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
@@ -26,12 +29,11 @@ async def get_single_task(*, session: Session = Depends(get_session), task_id: i
 async def create_task(*, session: Session = Depends(get_session), task: TaskCreate):
     async with httpx.AsyncClient() as client:
         response = await client.post(
-                "http://inference:8000/predict", # dostosuj endpoint
-                json={"task": task.description}  # dane wysyłane do modelu
+                f"{inference_url}/predict", 
+                json={"task": task.description}  
             )
         response.raise_for_status()
         prediction = response.json()
-        # 2. Przypisanie kategorii z odpowiedzi
         task.category = prediction
     
     db_task = Tasks.model_validate(task, from_attributes=True)
