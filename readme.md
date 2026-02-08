@@ -40,7 +40,7 @@ graph TB
 ```
 
 ## TO DO:
-- Finish helm deploy
+- <del>Finish helm deploy</del>
 - Add external secrets storage
 - Implementation of monitoring (Grafana and Prometheus)
 - Create full CICD pipeline for deployment of application
