@@ -1,3 +1,4 @@
 pydantic-core
 fastapi[standard]
 mlflow
+prometheus-fastapi-instrumentator

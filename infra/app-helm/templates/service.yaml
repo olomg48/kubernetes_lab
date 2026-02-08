@@ -4,11 +4,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ $appName }}-srv
+  labels:
+    monitor: prometheus
 spec:
   selector:
     app: {{ $appName }}
   ports:
-    - port: {{ $appConfig.service.port }}
+    - name: {{ $appConfig.service.portName}}
+      port: {{ $appConfig.service.port }}
       targetPort: {{ $appConfig.service.targetPort }}
       nodePort: {{ $appConfig.service.nodePort }}
   type: NodePort

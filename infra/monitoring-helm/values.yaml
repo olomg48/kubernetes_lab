@@ -1,0 +1,31 @@
+kube-prometheus-stack:
+    prometheus:
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        retention: 2h      
+        storageSpec: {}        
+        resources:             
+          requests:
+            memory: "400Mi"
+          limits:
+            memory: "800Mi"
+    grafana:
+      enabled: true
+      adminPassword: "admin" 
+      service:
+        type: ClusterIP 
+
+
+    alertmanager:
+      enabled: false
+    kubeStateMetrics:
+      enabled: true
+    nodeExporter:
+      enabled: true
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeControllerManager:
+      enabled: false

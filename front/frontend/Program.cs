@@ -1,4 +1,5 @@
 using frontend;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,9 @@ builder.Services.AddHttpClient("api", client =>
 
 var app = builder.Build();
 
+app.UseHttpMetrics();
 
+app.MapMetrics();
 
 app.UseExceptionHandler("/Error");
 

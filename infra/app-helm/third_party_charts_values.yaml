@@ -1,0 +1,25 @@
+minio:
+  enabled: true
+  commonLabels:
+    monitor: prometheus
+  mode: standalone
+  rootUser: admin
+  rootPassword: password123
+  service:
+    type: NodePort
+    port: 9000
+    nodePort: 30900
+    name: minio-api
+  consoleService:
+    type: NodePort
+    port: 9001
+    nodePort: 30901
+    name: minio-console 
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "100m"
+    limits:
+      memory: "2Gi"
+      cpu: "500m"
+  

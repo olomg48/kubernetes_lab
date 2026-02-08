@@ -4,12 +4,13 @@ global:
 apps:
   api:
     service:
+      portName: http-python
       port: 8000
       targetPort: 8000
       nodePort: 30800
     deploy:
       replicas: 1
-      image: olomg48/api:latest
+      image: olomg48/api:1.0
       containerPort: 8000
       env:
         INFERENCE_URL: "http://inference-srv:8000"
@@ -26,12 +27,13 @@ apps:
             cpu: "500m"
   inference:
     service:
+      portName: http-python
       port: 8000
       targetPort: 8000
       nodePort: 30801
     deploy:
       replicas: 1
-      image: olomg48/inference:latest
+      image: olomg48/inference:1.0
       containerPort: 8000
       env: 
         MLFLOW_TRACKING_URI: "http://mlflow-srv:5000"
@@ -44,12 +46,13 @@ apps:
             cpu: "500m"
   front:
     service:
+      portName: http-dotnet
       port: 8080
       targetPort: 8080
       nodePort: 30880
     deploy:
       replicas: 1
-      image: olomg48/front:latest
+      image: olomg48/front:1.1
       containerPort: 8080
       env:
         ApiBaseUrl: "http://api-srv:8000"
@@ -62,6 +65,7 @@ apps:
             cpu: "500m"
   mlflow:
     service:
+      portName: http-mlflow
       port: 5000
       targetPort: 5000
       nodePort: 30500
@@ -91,26 +95,5 @@ apps:
             memory: "2048Mi"
             cpu: "1000m"
 
-minio:
-  enabled: true
 
-  mode: standalone
-
-  rootUser: admin
-  rootPassword: password123
-
-  service:
-    type: NodePort
-    nodePort: 30900     # API S3
-
-  consoleService:
-    type: NodePort
-    nodePort: 30901     # Web UI
-    
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "100m"
-    limits:
-      memory: "2Gi"
-      cpu: "500m"
+  

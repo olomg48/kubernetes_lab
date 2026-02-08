@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 import mlflow.sklearn
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(swagger_ui_parameters={"syntaxHighlight": False})
-
+Instrumentator().instrument(app).expose(app)
 model_uri = "models:/TodoClassifier@champion"
 loaded_model = mlflow.sklearn.load_model(model_uri)
 

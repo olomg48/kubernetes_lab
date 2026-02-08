@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-helm-monitor
+  labels:
+    release: app-helm
+spec:
+  selector:
+    matchLabels:
+      monitor: "prometheus"
+  endpoints:
+  - port: http-dotnet
+    path: /metrics      
+    interval: 15s     
+  - port: http-python
+    path: /metrics      
+    interval: 15s   
+  - port: minio-api 
+    path: /minio/v2/metrics
+    interval: 30s

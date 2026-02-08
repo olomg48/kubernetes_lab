@@ -7,9 +7,16 @@ kubernetes.sln
 *tmp*
 *minio*
 temp*.py
+*.tgz
+*.zip
+*.rar
 # .NET / Visual Studio
 .vs/
 bin/
+*tfstate*
+*.terraform*
+.*backup
+*Chart.lock
 obj/
 artifacts/
 TestResults/
