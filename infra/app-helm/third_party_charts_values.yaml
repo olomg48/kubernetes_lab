@@ -1,5 +1,6 @@
 minio:
   enabled: true
+  replicas: 1
   commonLabels:
     monitor: prometheus
   mode: standalone

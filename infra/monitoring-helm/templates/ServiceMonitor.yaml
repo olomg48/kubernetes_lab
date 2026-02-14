@@ -3,8 +3,11 @@ kind: ServiceMonitor
 metadata:
   name: app-helm-monitor
   labels:
-    release: app-helm
+    release: monitoring
 spec:
+  namespaceSelector:
+    matchNames:
+      - application
   selector:
     matchLabels:
       monitor: "prometheus"
