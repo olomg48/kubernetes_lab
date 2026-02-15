@@ -43,6 +43,6 @@ graph TB
 - <del>Finish helm deploy</del>
 - Add external secrets storage
 - Implementation of monitoring (Grafana and Prometheus)
-- Create full CICD pipeline for deployment of application
+- <del>Create full CICD pipeline for deployment of application<del>
 - Create MLOps pipeline for model training and update 
 
