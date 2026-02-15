@@ -1,6 +1,6 @@
 global:
   security:
-    allowInsecureImages: true  
+    allowInsecureImages: true
 apps:
   api:
     service:
@@ -19,12 +19,12 @@ apps:
           secretName: connection-string
           secretKey: string
       resources:
-          requests:
-            memory: "512Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        requests:
+          memory: "512Mi"
+          cpu: "100m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
   inference:
     service:
       portName: http-python
@@ -35,15 +35,15 @@ apps:
       replicas: 1
       image: olomg48/inference:1.0
       containerPort: 8000
-      env: 
+      env:
         MLFLOW_TRACKING_URI: "http://mlflow-srv:5000"
       resources:
-          requests:
-            memory: "512Mi"
-            cpu: "100m"
-          limits:
-            memory: "1024Mi"
-            cpu: "500m"
+        requests:
+          memory: "512Mi"
+          cpu: "100m"
+        limits:
+          memory: "1024Mi"
+          cpu: "500m"
   front:
     service:
       portName: http-dotnet
@@ -52,17 +52,17 @@ apps:
       nodePort: 30880
     deploy:
       replicas: 1
-      image: olomg48/front:1.1
+      image: olomg48/front:84b96ac24f53ed50287c5a8ae09b03ce3dfebaca
       containerPort: 8080
       env:
         ApiBaseUrl: "http://api-srv:8000"
       resources:
-          requests:
-            memory: "512Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        requests:
+          memory: "512Mi"
+          cpu: "100m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
   mlflow:
     service:
       portName: http-mlflow
@@ -79,7 +79,7 @@ apps:
         MLFLOW_S3_ENDPOINT_URL: "http://app-helm-minio:9000"
         MLFLOW_S3_IGNORE_CONFIG_FILE: "true"
         MLFLOW_PORT: "5000"
-      args: 
+      args:
         - "--host"
         - "0.0.0.0"
         - "--serve-artifacts"
@@ -88,12 +88,9 @@ apps:
         - "--artifacts-destination"
         - "s3://mlflow-bucket/"
       resources:
-          requests:
-            memory: "512Mi"
-            cpu: "100m"
-          limits:
-            memory: "2048Mi"
-            cpu: "1000m"
-
-
-  
+        requests:
+          memory: "512Mi"
+          cpu: "100m"
+        limits:
+          memory: "2048Mi"
+          cpu: "1000m"
