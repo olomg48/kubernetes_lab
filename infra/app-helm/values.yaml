@@ -52,7 +52,7 @@ apps:
       nodePort: 30880
     deploy:
       replicas: 1
-      image: olomg48/front:84b96ac24f53ed50287c5a8ae09b03ce3dfebaca
+      image: olomg48/front:b940d7894a0f6fce3475e2cab25fccd235665c85
       containerPort: 8080
       env:
         ApiBaseUrl: "http://api-srv:8000"
