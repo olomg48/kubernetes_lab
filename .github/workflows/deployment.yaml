@@ -103,7 +103,7 @@ jobs:
 
       - name: Login into aks cluster
         run: |
-          az aks get credentials --resource-group olek-aks-rg --name olek-aks-cluster
+          az aks get-credentials --resource-group olek-aks-rg --name olek-aks-cluster
 
       - name: Helm dependencies and namespace
         run: |
