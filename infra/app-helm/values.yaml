@@ -10,7 +10,7 @@ apps:
       nodePort: 30800
     deploy:
       replicas: 1
-      image: olomg48/api:1.0
+      image: olomg48/api:1.1
       containerPort: 8000
       env:
         INFERENCE_URL: "http://inference-srv:8000"
@@ -55,7 +55,7 @@ apps:
       image: olomg48/front:84b96ac24f53ed50287c5a8ae09b03ce3dfebaca
       containerPort: 8080
       env:
-        ApiBaseUrl: "http://api-srv:8000"
+        ApiBaseUrl: "http://api-srv:8000/api"
       resources:
         requests:
           memory: "512Mi"
@@ -114,7 +114,7 @@ ingress:
           serviceName: api-srv
           servicePort: 8000
 
-ingress-controller:
+ingress-nginx:
   enabled: true
   controller:
     replicaCount: 1
