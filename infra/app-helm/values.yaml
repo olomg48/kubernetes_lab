@@ -94,3 +94,27 @@ apps:
         limits:
           memory: "2048Mi"
           cpu: "1000m"
+
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: 
+      paths:
+        - path: /
+          pathType: Prefix
+          serviceName: front-srv
+          servicePort: 8080
+
+        - path: /api
+          pathType: Prefix
+          serviceName: api-srv
+          servicePort: 8000
+
+ingress-controller:
+  enabled: true
+  controller:
+    replicaCount: 1
