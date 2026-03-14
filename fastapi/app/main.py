@@ -3,7 +3,7 @@ from .routers import tasks
 from prometheus_fastapi_instrumentator import Instrumentator
 
 
-app = FastAPI(swagger_ui_parameters={"syntaxHighlight": False})
+app = FastAPI(swagger_ui_parameters={"syntaxHighlight": False}, root_path="/api")
 Instrumentator().instrument(app).expose(app)
 
 
