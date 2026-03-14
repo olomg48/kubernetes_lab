@@ -104,6 +104,7 @@ ingress:
   hosts:
     - host: 
       paths:
+
         - path: /
           pathType: Prefix
           serviceName: front-srv
@@ -112,6 +113,21 @@ ingress:
         - path: /api
           pathType: Prefix
           serviceName: api-srv
+          servicePort: 8000
+        
+        - path: /minio
+          pathType: Prefix
+          serviceName: app-helm-minio-console
+          servicePort: 9001
+
+        - path: /mlflow
+          pathType: Prefix
+          serviceName: mlflow-srv
+          servicePort: 5000
+
+        - path: /inference
+          pathType: Prefix
+          serviceName: inference-srv
           servicePort: 8000
 
 ingress-nginx:
