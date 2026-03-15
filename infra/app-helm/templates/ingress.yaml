@@ -1,10 +1,10 @@
-{{- range $ingressName, $ingressConfig := .Values.apps }}
+{{- range $ingressName, $ingressConfig := .Values.ingress }}
 {{- if $ingressConfig.enabled }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $ingressName }}  # Używamy unikalnej nazwy z klucza w Values
+  name: {{ $ingressName }}  
   annotations:
     {{- toYaml $ingressConfig.annotations | nindent 4 }}
 spec:
