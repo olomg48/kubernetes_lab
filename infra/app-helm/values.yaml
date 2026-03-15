@@ -74,7 +74,7 @@ apps:
       image: olomg48/mlflow:1.0
       containerPort: 5000
       env:
-        MLFLOW_S3_ENDPOINT_URL: "https://minio48.tojest.dev"
+        MLFLOW_S3_ENDPOINT_URL: "s3://mlflow-bucket-olomg-504110891367-eu-north-1-an/mlflow-bucket/"
         MLFLOW_S3_IGNORE_CONFIG_FILE: "true"
         MLFLOW_PORT: "5000"
       secretEnv:
@@ -127,11 +127,6 @@ ingress:
             serviceName: app-helm-minio-console
             servicePort: 9001
 
-          - path: /mlflow
-            pathType: Prefix
-            serviceName: mlflow-srv
-            servicePort: 5000
-
           - path: /inference
             pathType: Prefix
             serviceName: inference-srv
@@ -148,7 +143,7 @@ ingress:
       - host: 
         paths:
           - path: /mlflow/(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             serviceName: mlflow-srv
             servicePort: 5000
 
