@@ -1,15 +1,17 @@
-{{- if .Values.ingress.enabled -}}
+{{- range $ingressName, $ingressConfig := .Values.apps }}
+{{- if $ingressConfig.enabled }}
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-app
+  name: {{ $ingressName }}  # Używamy unikalnej nazwy z klucza w Values
   annotations:
-    {{- toYaml .Values.ingress.annotations | nindent 4 }}
+    {{- toYaml $ingressConfig.annotations | nindent 4 }}
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
+  ingressClassName: {{ $ingressConfig.className | default "nginx" }}
   rules:
-    {{- range .Values.ingress.hosts }}
-    - host: 
+    {{- range $ingressConfig.hosts }}
+    - host: {{ .host | quote }}
       http:
         paths:
           {{- range .paths }}
@@ -22,4 +24,5 @@ spec:
                   number: {{ .servicePort }}
           {{- end }}
     {{- end }}
+{{- end }}
 {{- end }}

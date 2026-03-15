@@ -6,13 +6,14 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
+from dotenv import load_dotenv
 import os
 
-os.environ['MLFLOW_S3_ENDPOINT_URL'] = "http://localhost:9001"
-os.environ['AWS_ACCESS_KEY_ID'] = "admin"
-os.environ['AWS_SECRET_ACCESS_KEY'] = "password123"
+s3_endpoint = os.getenv('MLFLOW_S3_ENDPOINT_URL')
+access_key = os.getenv('AWS_ACCESS_KEY_ID')
+secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-mlflow.set_tracking_uri("http://localhost:5000/")
+mlflow.set_tracking_uri("https://3226001fe4a0-10-244-7-115-31327.spca.r.killercoda.com/mlflow")
 mlflow.set_experiment("TodoClassifier")
 #mlflow.sklearn.autolog()
 print(f"Tracking URI: {mlflow.get_tracking_uri()}")
