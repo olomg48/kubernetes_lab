@@ -13,7 +13,7 @@ s3_endpoint = os.getenv('MLFLOW_S3_ENDPOINT_URL')
 access_key = os.getenv('AWS_ACCESS_KEY_ID')
 secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-mlflow.set_tracking_uri("https://99d7ab2d3005-10-244-6-82-32643.spca.r.killercoda.com/mlflow/")
+mlflow.set_tracking_uri("https://a3b9abd9f28b-10-244-7-177-31757.spca.r.killercoda.com/mlflow/")
 mlflow.set_experiment("TodoClassifier")
 #mlflow.sklearn.autolog()
 print(f"Tracking URI: {mlflow.get_tracking_uri()}")
