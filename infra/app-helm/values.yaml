@@ -63,46 +63,7 @@ apps:
         limits:
           memory: "512Mi"
           cpu: "500m"
-  mlflow:
-    service:
-      portName: http-mlflow
-      port: 5000
-      targetPort: 5000
-      nodePort: 30500
-    deploy:
-      replicas: 1
-      image: olomg48/mlflow:1.0
-      containerPort: 5000
-      env:
-        MLFLOW_S3_ENDPOINT_URL: "https://mlflow-bucket-olomg-504110891367-eu-north-1-an.s3.eu-north-1.amazonaws.com/mlflow-bucket/"
-        MLFLOW_S3_IGNORE_CONFIG_FILE: "true"
-        MLFLOW_PORT: "5000"
-      secretEnv:
-        AWS_ACCESS_KEY_ID:
-          secretName: minio-user
-          secretKey: user
-        AWS_SECRET_ACCESS_KEY:
-          secretName: minio-pass
-          secretKey: pass
-      args:
-        - "--host"
-        - "0.0.0.0"
-        - "--serve-artifacts"
-        - "--allowed-hosts"
-        - "*" 
-        - "--artifacts-destination"
-        - "s3://mlflow-bucket/"
-        - "--cors-allowed-origins"
-        - "*"
-        
-      resources:
-        requests:
-          memory: "512Mi"
-          cpu: "100m"
-        limits:
-          memory: "2048Mi"
-          cpu: "1000m"
-
+  
 
 ingress:
   default-ingress:
