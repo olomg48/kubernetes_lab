@@ -36,7 +36,7 @@ apps:
       image: olomg48/inference:1.0
       containerPort: 8000
       env:
-        MLFLOW_TRACKING_URI: "http://mlflow-srv:5000"
+        MLFLOW_TRACKING_URI: "https://mlflow.toadres.pl/"
       resources:
         requests:
           memory: "512Mi"
