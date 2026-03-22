@@ -3,11 +3,11 @@
 This project is a hands-on laboratory environment designed to practice modern DevOps and MLOps workflows. It simulates a production-grade setup where machine learning models are served through a containerized microservices architecture managed by Kubernetes and deployed in helm chart.
 
 ## Tech Stack
-- **Orchestration:** Kubernetes
+- **Orchestration:** Kubernetes/AKS
 - **Programming Languages:** C#/.NET, Python/Fastapi
 - **Databases:** Postgres PaaS
 - **MLOps:** MLflow
-- **Storage:** Minio(local S3 storage)
+- **Storage:** AWS S3
 
 ## Architecture Overview
 
@@ -16,6 +16,7 @@ The system follows a microservices pattern with a clear separation of tasks. It 
 ```mermaid
 graph TB
     subgraph External_Infrastructure [External Infrastructure]
+        MLF[MLflow Server]
         DB[(PostgreSQL Database)]
     end
 
@@ -23,15 +24,14 @@ graph TB
         FE[Frontend - .NET]
         BE[Backend - FastAPI]
         INF[Inference Service - FastAPI]
-        MLF[MLflow Server]
-        MIN[MinIO - Artifact Store]
-        
         S[(K8s Secrets)] -.->|Inject Credentials| BE
 
     end
 
+    S3[AWS S3 STORAGE]
+
     DS[Data Scientist] -->|Uploads Models| MLF
-    MLF -->|Store Model Files| MIN
+    MLF -->|Store Model Files| S3
     
     FE -->|Requests Data| BE
     BE -->|CRUD| DB
