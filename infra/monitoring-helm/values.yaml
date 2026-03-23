@@ -1,36 +1,66 @@
-kube-prometheus-stack:
-    prometheus:
-      prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
-        retention: 2h      
-        storageSpec: {}        
-        resources:             
-          requests:
-            memory: "400Mi"
-          limits:
-            memory: "800Mi"
-    grafana:
-      enabled: true
-      adminPassword: "admin" 
-      service:
-        type: ClusterIP 
-      sidecar:
-      dashboards:
-        enabled: true
-        label: grafana_dashboard
-        searchNamespace: ALL 
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    retention: 2h      
+    storageSpec: {}        
+    resources:             
+      requests:
+        memory: "400Mi"
+      limits:
+        memory: "800Mi"
+grafana:
+  enabled: true
+  adminPassword: "admin" 
+  service:
+    type: ClusterIP 
+  sidecar:
+  dashboards:
+    enabled: true
+    label: grafana_dashboard
+    searchNamespace: ALL 
 
 
-    alertmanager:
-      enabled: false
-    kubeStateMetrics:
-      enabled: true
-    nodeExporter:
-      enabled: true
-    kubeProxy:
-      enabled: false
-    kubeScheduler:
-      enabled: false
-    kubeControllerManager:
-      enabled: false
+alertmanager:
+  enabled: false
+kubeStateMetrics:
+  enabled: true
+nodeExporter:
+  enabled: true
+kubeProxy:
+  enabled: false
+kubeScheduler:
+  enabled: false
+kubeControllerManager:
+  enabled: false
+
+
+ingress:
+  default-ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    hosts: 
+      - host: monitoring-olomg.pl
+        paths:
+          - path: /
+            pathType: Prefix
+            serviceName: monitoring-grafana
+            servicePort: 80
+      - host: prometheus-olomg.pl
+        paths:
+          - path: /
+            pathType: Prefix
+            serviceName: prometheus-operated
+            servicePort: 9090
+      - host: alertmanager-olomg.pl
+        paths:
+          - path: /
+            pathType: Prefix
+            serviceName: alertmanager-operated
+            servicePort: 9093
+ingress-nginx:
+  enabled: true
+  controller:
+    replicaCount: 1
