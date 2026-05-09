@@ -116,4 +116,4 @@ jobs:
             --from-literal=string='${{ secrets.DB_PASSWORD }}' \
             --dry-run=client -o yaml | kubectl apply -f -          
             helm upgrade --install app-helm ./infra/app-helm --namespace application --create-namespace \
-            -f ./infra/app-helm/values.yaml -f ./infra/app-helm/third_party_charts_values.yaml
+            -f ./infra/app-helm/values.yaml
