@@ -2,3 +2,9 @@ pydantic-core
 fastapi[standard]
 mlflow
 prometheus-fastapi-instrumentator
+loguru
+uuid
+json
+logging
+sys
+python-dotenv

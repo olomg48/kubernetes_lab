@@ -1,4 +1,4 @@
-FROM python:3.13-rc
+FROM python:3.14.4
 
 WORKDIR /fastapi
 

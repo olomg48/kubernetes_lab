@@ -7,7 +7,7 @@ import json
 import sys
 import uuid
 from dotenv import load_dotenv
-from fastapi.responses import JSONResponse # To przyda się za chwilę
+from fastapi.responses import JSONResponse
 
 load_dotenv()
 app = FastAPI(swagger_ui_parameters={"syntaxHighlight": False}, root_path="/api")
