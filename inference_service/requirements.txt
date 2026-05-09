@@ -5,5 +5,4 @@ prometheus-fastapi-instrumentator
 loguru
 uuid
 logging
-sys
 python-dotenv
