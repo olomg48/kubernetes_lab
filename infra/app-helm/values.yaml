@@ -7,7 +7,6 @@ apps:
       portName: http-python
       port: 8000
       targetPort: 8000
-      nodePort: 30800
     deploy:
       replicas: 1
       image: olomg48/api:6e990459e744e433e28797861cdfc0fd6ea812be
@@ -30,7 +29,6 @@ apps:
       portName: http-python
       port: 8000
       targetPort: 8000
-      nodePort: 30801
     deploy:
       replicas: 1
       image: olomg48/inference:6e990459e744e433e28797861cdfc0fd6ea812be
@@ -49,7 +47,6 @@ apps:
       portName: http-dotnet
       port: 8080
       targetPort: 8080
-      nodePort: 30880
     deploy:
       replicas: 1
       image: olomg48/front:ab61c54033f6c7c767faf7f727b48192400e6d89

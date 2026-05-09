@@ -13,6 +13,5 @@ spec:
     - name: {{ $appConfig.service.portName}}
       port: {{ $appConfig.service.port }}
       targetPort: {{ $appConfig.service.targetPort }}
-      nodePort: {{ $appConfig.service.nodePort }}
-  type: NodePort
+  type: ClusterIP
 {{- end }}
