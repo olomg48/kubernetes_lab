@@ -22,7 +22,7 @@ grafana:
   additionalDataSources:
     - name: Loki
       type: loki
-      url: http://monitoring-loki:3100
+      url: http://{{ .Release.Name }}-loki:3100
       access: proxy
       isDefault: false
 
