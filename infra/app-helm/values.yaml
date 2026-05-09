@@ -10,7 +10,7 @@ apps:
       nodePort: 30800
     deploy:
       replicas: 1
-      image: olomg48/api:1.1
+      image: olomg48/api:6e990459e744e433e28797861cdfc0fd6ea812be
       containerPort: 8000
       env:
         INFERENCE_URL: "http://inference-srv:8000"
@@ -33,7 +33,7 @@ apps:
       nodePort: 30801
     deploy:
       replicas: 1
-      image: olomg48/inference:1.0
+      image: olomg48/inference:6e990459e744e433e28797861cdfc0fd6ea812be
       containerPort: 8000
       env:
         MLFLOW_TRACKING_URI: "https://mlflow.toadres.pl/"
@@ -52,7 +52,7 @@ apps:
       nodePort: 30880
     deploy:
       replicas: 1
-      image: olomg48/front:b940d7894a0f6fce3475e2cab25fccd235665c85
+      image: olomg48/front:6e990459e744e433e28797861cdfc0fd6ea812be
       containerPort: 8080
       env:
         ApiBaseUrl: "http://api-srv:8000/api"
@@ -63,8 +63,6 @@ apps:
         limits:
           memory: "512Mi"
           cpu: "500m"
-  
-
 ingress:
   default-ingress:
     enabled: true
@@ -72,23 +70,20 @@ ingress:
     annotations:
       kubernetes.io/ingress.class: nginx
     hosts:
-      - host: 
+      - host:
         paths:
           - path: /
             pathType: Prefix
             serviceName: front-srv
             servicePort: 8080
-
           - path: /api
             pathType: Prefix
             serviceName: api-srv
             servicePort: 8000
-
           - path: /inference
             pathType: Prefix
             serviceName: inference-srv
             servicePort: 8000
-
 ingress-nginx:
   enabled: true
   controller:
