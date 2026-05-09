@@ -1,9 +1,9 @@
 from fastapi import Depends, APIRouter, Response, HTTPException
 from sqlmodel import Session, select
 from typing import List
-from ..db import get_session
-from ..models import Tasks
-from ..schemas import TaskRead, TaskCreate, TaskUpdate
+from app.db import get_session
+from app.models import Tasks
+from app.schemas import TaskRead, TaskCreate, TaskUpdate
 import httpx
 import os
 
@@ -45,7 +45,7 @@ async def create_task(*, session: Session = Depends(get_session), task: TaskCrea
 @router.patch("/update/{task_id}", response_model=TaskRead)
 async def update_task(*, session: Session = Depends(get_session), task_id: int, task: TaskUpdate):
     db_task = session.get(Tasks, task_id)
-    if not task:
+    if not db_task:
         raise HTTPException(status_code=404, detail="Task not found")
     task_data = task.model_dump(exclude_unset=True)
     db_task.sqlmodel_update(task_data)
